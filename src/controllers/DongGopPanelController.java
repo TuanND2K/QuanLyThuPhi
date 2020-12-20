@@ -93,6 +93,7 @@ public class DongGopPanelController {
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.setPreferredSize(new Dimension(1350, 400));
+       
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());
         jpnView.add(scroll);

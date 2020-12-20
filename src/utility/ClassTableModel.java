@@ -2,6 +2,7 @@ package utility;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import models.HoKhauModel;
 import models.KhoanDongGopModel;
 import models.KhoanPhiBatBuocModel;
 
@@ -60,6 +61,31 @@ public class ClassTableModel {
             obj[2] = item.getMucPhi();
             obj[3] = item.getNgayBatDau();
             obj[4] = item.getNgayKetThuc();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
+    public DefaultTableModel setTableHoKhau(List<HoKhauModel> listItem, String[] listColumn) {
+        final int columns = listColumn.length;
+      
+        DefaultTableModel dtm = new DefaultTableModel()  {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 4 ? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj;
+        obj = new Object[columns];
+        listItem.forEach((HoKhauModel item) -> {
+            obj[0] = item.getID();
+            obj[1] = item.getMaHoKhau();
+            obj[2] = item.getTenChuHo();
+            obj[3] = item.getSoLuongThanhVien();
             dtm.addRow(obj);
         });
         return dtm;
