@@ -6,6 +6,7 @@
 package services;
 
 import Bean.DongGopBean;
+import controllers.LoginController;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,4 +115,26 @@ public class DongGopService {
         //System.out.println("kich thuoc = " + list.size());
         return list;
     }*/
+    public boolean capNhatDongGop(DongGopModel dongGop) {
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            PreparedStatement insertDongGop = conn.prepareStatement("insert into dong_gop values(?, ?, ?, ?, ?)");
+            insertDongGop.setInt(1, dongGop.getIdHoKhau());
+            insertDongGop.setString(2, dongGop.getMaPhi());
+            insertDongGop.setInt(3, LoginController.currentUser.getID());
+            Date ngayNop = new Date(dongGop.getNgayNop().getTime());
+            insertDongGop.setDate(4, ngayNop);
+            insertDongGop.setInt(5, dongGop.getSoTien());
+            insertDongGop.executeUpdate();    
+        } catch (SQLException ex) {
+            Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+        return true;
+    }
+    
 }

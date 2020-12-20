@@ -33,7 +33,7 @@ public class DongGopPanelController {
     private ClassTableModel tableModelKhoanDongGop = null;
     private final String[] COLUMNS = {"Mã", "Tên đóng góp", "Ngày bắt đầu", "Ngày kết thúc"};
     private JFrame parentJFrame;
-
+    private KhoanDongGopModel selectedKhoanDongGop;
     public DongGopPanelController(JPanel jpnView) {
         this.jpnView = jpnView;
         tableModelKhoanDongGop = new ClassTableModel();
@@ -70,21 +70,26 @@ public class DongGopPanelController {
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
-        /*table.addMouseListener(new MouseAdapter() {
+     
+        table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                if (e.getClickCount() > 1) {
-                    NhanKhauBean temp = listDongGopBeans.get(table.getSelectedRow());
+                    List<KhoanDongGopModel> listKhoanDongGop = new ArrayList<>();
+                    for(DongGopBean dongGopBean: listDongGopBeans) {
+                        KhoanDongGopModel khoanDongGop = dongGopBean.getKhoanDongGopModel();
+                        listKhoanDongGop.add(khoanDongGop);
+                    }
+                    selectedKhoanDongGop = listKhoanDongGop.get(table.getSelectedRow());
+                    /*NhanKhauBean temp = listKhoanDongGop.get(table.getSelectedRow());
                     NhanKhauBean info = dongGopService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
                     InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
                     infoJframe.setLocationRelativeTo(null);
-                    infoJframe.setVisible(true);
-                }
+                    infoJframe.setVisible(true);*/
+                //table.getSelectedRow();
             }
             
-        });*/
-        
+        });
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.setPreferredSize(new Dimension(1350, 400));
@@ -109,5 +114,9 @@ public class DongGopPanelController {
 
     public void setJpnView(JPanel jpnView) {
         this.jpnView = jpnView;
+    }
+    
+    public KhoanDongGopModel getSelectedKhoanDongGop() {
+        return this.selectedKhoanDongGop;
     }
 }

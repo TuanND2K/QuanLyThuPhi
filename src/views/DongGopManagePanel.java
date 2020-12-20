@@ -2,6 +2,7 @@ package views;
 
 import controllers.DongGopPanelController;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import views.DongGopManagerFrame.CapNhatDongGopFrame;
 import views.DongGopManagerFrame.ThemDotDongGopFrame;
 
@@ -116,11 +117,15 @@ public class DongGopManagePanel extends javax.swing.JPanel {
 
     
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-         /*  // hien thi jFrame cap nhat dong gop
-        DangKyTamVangJFrame dangKyTamVangJFrame = new DangKyTamVangJFrame(this.parentJFrame);
-        dangKyTamVangJFrame.setLocationRelativeTo(null);
-        dangKyTamVangJFrame.setResizable(false);
-        dangKyTamVangJFrame.setVisible(true);*/
+        // hien thi jFrame cap nhat dong gop
+        if (controller.getSelectedKhoanDongGop() == null) {
+            JOptionPane.showMessageDialog(null, "Chưa chọn khoản đóng góp!");
+        } else {
+            CapNhatDongGopFrame capNhatDongGopFrame = new CapNhatDongGopFrame(controller, parentJFrame);
+            capNhatDongGopFrame.setLocationRelativeTo(null);
+            capNhatDongGopFrame.setResizable(false);
+            capNhatDongGopFrame.setVisible(true);
+        }
     }//GEN-LAST:event_updateBtnActionPerformed
 
 
