@@ -124,6 +124,6 @@ public class DongGopPanelController {
     }
     
     public KhoanDongGopModel getSelectedKhoanDongGop() {
-        return this.selectedKhoanDongGop;
+        return selectedKhoanDongGop;
     }
 }

@@ -88,7 +88,6 @@ public class DongGopService {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        //System.out.println("kich thuoc = " + list.size());
         return list;
     }
     /*
@@ -133,7 +132,6 @@ public class DongGopService {
             Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        
         return true;
     }
     

@@ -5,8 +5,6 @@
  */
 package views.DongGopManagerFrame;
 
-import Bean.DongGopBean;
-import controllers.DongGopController.ThemDotDongGopController;
 import controllers.DongGopPanelController;
 import controllers.LoginController;
 import java.awt.event.WindowAdapter;
@@ -61,7 +59,7 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
         soTienNopTxb = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        ngayNopChooser = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         updateBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
@@ -128,7 +126,7 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
                                 .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ngayNopChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel7))
                                     .addGroup(layout.createSequentialGroup()
@@ -169,7 +167,7 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ngayNopChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -191,18 +189,14 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
             temp.setMaPhi(khoanDongGop.getMaPhi());
             temp.setIdNguoiNhap(LoginController.currentUser.getID());
             temp.setSoTien(Integer.parseInt(soTienNopTxb.getText()));
-            temp.setNgayNop(jDateChooser1.getDate());
+            temp.setNgayNop(ngayNopChooser.getDate());
             
-            try {
-                if (dongGopService.capNhatDongGop(temp)) {
-                    JOptionPane.showMessageDialog(null, "Cập nhật thành công!!");
-                    close();
-                    parentController.refreshData();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+            if (dongGopService.capNhatDongGop(temp)) {
+                JOptionPane.showMessageDialog(null, "Cập nhật thành công!!");
+                close();
+                parentController.refreshData();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui lòng kiểm tra lại!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_updateBtnActionPerformed
@@ -213,13 +207,13 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cancelBtnActionPerformed
      
-    void close() {
+    private void close() {
         this.parentFrame.setEnabled(true);
         dispose();
     }
     
     private boolean validateValueInForm() {
-        // check null
+        
         if (maHoKhauTxb.getText().trim().isEmpty() 
                 || soTienNopTxb.getText().trim().isEmpty()){
             String message = "Vui lòng nhập hết các trường bắt buộc";
@@ -241,7 +235,7 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
         }
         
         KhoanDongGopModel khoanDongGop = parentController.getSelectedKhoanDongGop();
-        Date ngayNop = jDateChooser1.getDate();
+        Date ngayNop = ngayNopChooser.getDate();
         if (ngayNop.before(khoanDongGop.getNgayBatDau()) || ngayNop.after(khoanDongGop.getNgayKetThuc())) {
             String message = "Ngay nộp phải từ " + khoanDongGop.getNgayBatDau() 
                                 + "đến " + khoanDongGop.getNgayKetThuc();
@@ -255,7 +249,6 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelBtn;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -264,6 +257,7 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField maHoKhauTxb;
+    private com.toedter.calendar.JDateChooser ngayNopChooser;
     private javax.swing.JTextField soTienNopTxb;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables

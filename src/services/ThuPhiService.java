@@ -8,13 +8,19 @@ package services;
 import models.KhoanPhiBatBuocModel;
 import java.sql.*;
 import Bean.*;
+import controllers.LoginController;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.HoKhauModel;
+import models.ThuPhiModel;
 /**
  *
  * @author TuanNguyen
  */
 public class ThuPhiService {
+    
     public boolean addNew(KhoanPhiBatBuocModel khoanPhiModel) {
         try {
             Connection conn = MysqlConnection.getMysqlConnection();
@@ -34,6 +40,31 @@ public class ThuPhiService {
         return true;
     }
     
+    public List<HoKhauModel> getListHoKhau() {
+        List<HoKhauModel> listHoKhau = new ArrayList<>();
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            String selectAll = "select * from thong_tin_ho_khau";
+            PreparedStatement query = conn.prepareStatement(selectAll);
+            ResultSet rs = query.executeQuery();
+            while (rs.next()) {
+                HoKhauModel hoKhau = new HoKhauModel();
+                hoKhau.setID(rs.getInt("idHoKhau"));
+                hoKhau.setMaHoKhau(rs.getString("maHoKhau"));
+                hoKhau.setIdChuHo(rs.getInt("idChuHo"));
+                hoKhau.setTenChuHo(rs.getString("hoTen"));
+                hoKhau.setSoLuongThanhVien(rs.getInt("soThanhVien"));
+                listHoKhau.add(hoKhau);                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        return  listHoKhau;
+    }
+    
     public List<ThuPhiBean> getListThuPhiBeans(){
         List<ThuPhiBean> list = new ArrayList<>();
         try {
@@ -43,21 +74,20 @@ public class ThuPhiService {
             ResultSet rs = query.executeQuery();
             while(rs.next()) {
                 ThuPhiBean thuPhiBean = new ThuPhiBean();
-                KhoanPhiBatBuocModel khoanDongGop = thuPhiBean.getKhoanPhiModel();
-                khoanDongGop.setMaPhi(rs.getString("maPhi"));
-                khoanDongGop.setTenPhi(rs.getString("tenPhi"));
-                khoanDongGop.setNgayBatDau(rs.getDate("batDau"));
-                khoanDongGop.setNgayKetThuc(rs.getDate("ketThuc"));
-                khoanDongGop.setMucPhi(rs.getInt("mucPhi"));
-                
+                KhoanPhiBatBuocModel khoanPhi = thuPhiBean.getKhoanPhiModel();
+                khoanPhi.setMaPhi(rs.getString("maPhi"));
+                khoanPhi.setTenPhi(rs.getString("tenPhi"));
+                khoanPhi.setNgayBatDau(rs.getDate("batDau"));
+                khoanPhi.setNgayKetThuc(rs.getDate("ketThuc"));
+                khoanPhi.setMucPhi(rs.getInt("mucPhi"));
                 list.add(thuPhiBean);
-                /*try {
-                     prepareQuery = "select * from thong_tin_ho_khau tthk join dong_gop dg on dg.idHoKhau = tthk.idHoKhau where maKhoanDongGop = ?";
+                try {
+                     prepareQuery = "select * from thong_tin_ho_khau tthk join thu_phi tp on tp.idHoKhau = tthk.idHoKhau where maPhi = ?";
                      query = conn.prepareStatement(prepareQuery);
-                     query.setString(1, khoanDongGop.getMaPhi());
+                     query.setString(1, khoanPhi.getMaPhi());
                      ResultSet rs1 = query.executeQuery();
                      List<HoKhauModel> listHoKhau = thuPhiBean.getListHoKhau();
-                     List<DongGopModel> listDongGop = thuPhiBean.getListDongGop();
+                     List<ThuPhiModel> listThuPhi = thuPhiBean.getListThuPhi();
                      while(rs1.next()) {
                          HoKhauModel hoKhau = new HoKhauModel();
                          hoKhau.setID(rs1.getInt("idHoKhau"));
@@ -67,22 +97,40 @@ public class ThuPhiService {
                          hoKhau.setSoLuongThanhVien(rs1.getInt("soThanhVien"));
                          listHoKhau.add(hoKhau);
                          
-                         DongGopModel dongGop = new DongGopModel();
-                         dongGop.setIdHoKhau(rs1.getInt("idHoKhau"));
-                         dongGop.setMaPhi(rs1.getString("maKhoanDongGop"));
-                         dongGop.setSoTien(rs1.getInt("soTien"));
-                         dongGop.setNgayNop(rs1.getDate("ngayNop"));
-                         listDongGop.add(dongGop);
+                         ThuPhiModel thuPhi = new ThuPhiModel();
+                         thuPhi.setIdHoKhau(rs1.getInt("idHoKhau"));
+                         thuPhi.setMaPhi(rs1.getString("maPhi"));
+                         thuPhi.setNgayNop(rs1.getDate("ngayNop"));
+                         listThuPhi.add(thuPhi);
                      }
                 }catch (Exception e) {
                     e.printStackTrace();
-                }*/
+                }
                 
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
-        System.out.println("kich thuoc = " + list.size());
         return list;
     }
+    
+    public boolean capNhatThuPhi(ThuPhiModel thuPhi) {
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            PreparedStatement insertThuPhi = conn.prepareStatement("insert into thu_phi values(?, ?, ?, ?)");
+            insertThuPhi.setInt(1, thuPhi.getIdHoKhau());
+            insertThuPhi.setString(2, thuPhi.getMaPhi());
+            insertThuPhi.setInt(3, LoginController.currentUser.getID());
+            Date ngayNop = new Date(thuPhi.getNgayNop().getTime());
+            insertThuPhi.setDate(4, ngayNop);    
+            insertThuPhi.executeUpdate();    
+        } catch (SQLException ex) {
+            Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }    
 }

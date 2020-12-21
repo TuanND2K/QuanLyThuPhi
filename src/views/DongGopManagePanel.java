@@ -17,13 +17,13 @@ public class DongGopManagePanel extends javax.swing.JPanel {
      * Creates new form NhanKhauManagePanel
      */
     private DongGopPanelController controller = null;
-    private JFrame parentJFrame;
+    private JFrame parentFrame;
     
     public DongGopManagePanel(JFrame parentFrame) {
-        this.parentJFrame = parentFrame;
+        this.parentFrame = parentFrame;
         initComponents();
         controller = new DongGopPanelController(tablePanel);
-        controller.setParentJFrame(parentJFrame);
+        controller.setParentJFrame(parentFrame);
         controller.setDataTable();
     }
 
@@ -109,7 +109,7 @@ public class DongGopManagePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtnActionPerformed
-        ThemDotDongGopFrame addNewPeopleJFrame = new ThemDotDongGopFrame(this.controller, this.parentJFrame);
+        ThemDotDongGopFrame addNewPeopleJFrame = new ThemDotDongGopFrame(this.controller, this.parentFrame);
         addNewPeopleJFrame.setLocationRelativeTo(null);
         addNewPeopleJFrame.setResizable(false);
         addNewPeopleJFrame.setVisible(true);
@@ -121,7 +121,7 @@ public class DongGopManagePanel extends javax.swing.JPanel {
         if (controller.getSelectedKhoanDongGop() == null) {
             JOptionPane.showMessageDialog(null, "Chưa chọn khoản đóng góp!");
         } else {
-            CapNhatDongGopFrame capNhatDongGopFrame = new CapNhatDongGopFrame(controller, parentJFrame);
+            CapNhatDongGopFrame capNhatDongGopFrame = new CapNhatDongGopFrame(controller, parentFrame);
             capNhatDongGopFrame.setLocationRelativeTo(null);
             capNhatDongGopFrame.setResizable(false);
             capNhatDongGopFrame.setVisible(true);

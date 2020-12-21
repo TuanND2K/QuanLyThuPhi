@@ -16,9 +16,9 @@ public class DongGopBean {
             listHoKhau = new ArrayList<>();
             listDongGop = new ArrayList<>();
         }
-	public DongGopBean(KhoanDongGopModel dongGopModel, List<HoKhauModel> listHoKhau, List<DongGopModel> listDongGop) {
-		super();
-		this.khoanDongGopModel = dongGopModel;
+        
+	public DongGopBean(KhoanDongGopModel khoanDongGopModel, List<HoKhauModel> listHoKhau, List<DongGopModel> listDongGop) {
+		this.khoanDongGopModel = khoanDongGopModel;
 		this.listHoKhau = listHoKhau;
 		this.listDongGop = listDongGop;
 	}
@@ -63,7 +63,7 @@ public class DongGopBean {
                         + "<p>Ngày bắt đầu: <b>" + khoanDongGopModel.getNgayBatDau() + "</p>"
                         + "<p>Ngày kết thúc: <b>" + khoanDongGopModel.getNgayKetThuc() + "</p>"
                         + "<p>Tổng số tiền đã thu được: <b>" + getTongDongGop() + "</p>"
-                        + "<h4>Danh sách hộ đóng góp<table>"
+                        + "<h4>Danh sách hộ đóng góp: " + listHoKhau.size() + " hộ đã đóng góp<table>"
                         + "<tr>"
                         + "<th>ID hộ</th>"
                         + "<th>Mã hộ</th>"
@@ -74,24 +74,12 @@ public class DongGopBean {
                         + "</tr>";
             for (int i = 0; i < listHoKhau.size(); i++) {
                 res += "<tr>"
-                        + "<td>"
-                        + listHoKhau.get(i).getID()
-                        + "</td>"
-                        + "<td>"
-                        + listHoKhau.get(i).getMaHoKhau()
-                        + "</td>"
-                        +"<td>"
-                        + listHoKhau.get(i).getIdChuHo()
-                        + "</td>"
-                        + "<td>"
-                        + listHoKhau.get(i).getTenChuHo()
-                        + "</td>"
-                        + "<td>"
-                        + listDongGop.get(i).getSoTien()
-                        + "</td>"
-                        + "<td>"
-                        + listDongGop.get(i).getNgayNop()
-                        + "</td>"
+                        + "<td>" + listHoKhau.get(i).getID() + "</td>"
+                        + "<td>" + listHoKhau.get(i).getMaHoKhau() + "</td>"
+                        +"<td>" + listHoKhau.get(i).getIdChuHo() + "</td>"
+                        + "<td>" + listHoKhau.get(i).getTenChuHo() + "</td>" 
+                        + "<td>" + listDongGop.get(i).getSoTien() + "</td>"
+                        + "<td>" + listDongGop.get(i).getNgayNop()+ "</td>"
                         + "</tr>";
             }
             res += "</table></div></html>";
