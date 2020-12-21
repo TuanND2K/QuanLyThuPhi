@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.DongGopController;
+package controllers.ThuPhiController;
 
+import controllers.ThuPhiPanelController;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.EventObject;
 import java.util.List;
-import java.util.*;
 import javax.swing.*;
-
-import javax.swing.table.*;
-import models.HoKhauModel;
+import javax.swing.table.DefaultTableModel;
+import models.*;
 import services.HoKhauService;
 import utility.ClassTableModel;
 
@@ -20,15 +21,19 @@ import utility.ClassTableModel;
  *
  * @author TuanNguyen
  */
-public class CapNhatDongGopController {
+public class CapNhatThuPhiController {
     private HoKhauModel selectedHoKhauModel;
     private JPanel tableHoKhau;
+    private JLabel soTienNop;
+    private ThuPhiPanelController parentController;
     private HoKhauService hoKhauService = new HoKhauService();
     private ClassTableModel tableModelHoKhau = null;
     private final String[] COLUMNS = {"ID Hộ khẩu", "Mã hộ khẩu", "Tên chủ hộ", "Số thành viên"};
     
-    public CapNhatDongGopController(JPanel tableHoKhau) {
+    public CapNhatThuPhiController(JPanel tableHoKhau, JLabel soTienNop, ThuPhiPanelController parentController){
         this.tableHoKhau = tableHoKhau;
+        this.soTienNop = soTienNop;
+        this.parentController = parentController;
         tableModelHoKhau = new ClassTableModel();
         setDataTable();
     }
@@ -76,8 +81,10 @@ public class CapNhatDongGopController {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//              JOptionPane.showConfirmDialog(null, table.getSelectedRow());  
+//              JOptionPane.showConfirmDialog(null, table.getSelectedRow());
                 selectedHoKhauModel = listItem.get(table.getSelectedRow());
+                soTienNop.setText("Số tiền nộp: " 
+                        + parentController.getSelectedKhoanPhi().getMucPhi() * selectedHoKhauModel.getSoLuongThanhVien() + " nghìn đồng");
             }
             
         });

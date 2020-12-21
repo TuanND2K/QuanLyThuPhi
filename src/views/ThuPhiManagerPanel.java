@@ -7,6 +7,8 @@ package views;
 
 import controllers.ThuPhiPanelController;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import views.ThuPhiManagerFrame.CapNhatThuPhiFrame;
 import views.ThuPhiManagerFrame.ThemKhoanPhiFrame;
 
 /**
@@ -107,10 +109,14 @@ public class ThuPhiManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_themMoiBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        /*TachHoKhau tachHoKhau = new TachHoKhau(this.parentFrame);
-        tachHoKhau.setLocationRelativeTo(null);
-        tachHoKhau.setResizable(false);
-        tachHoKhau.setVisible(true);*/
+        if (controller.getSelectedKhoanPhi() == null) {
+            JOptionPane.showMessageDialog(null, "Chưa chọn khoản phí!");
+        } else {
+            CapNhatThuPhiFrame capNhatThuPhiFrame = new CapNhatThuPhiFrame(controller, parentFrame);
+            capNhatThuPhiFrame.setLocationRelativeTo(null);
+            capNhatThuPhiFrame.setResizable(false);
+            capNhatThuPhiFrame.setVisible(true);
+        }
     }//GEN-LAST:event_updateBtnActionPerformed
     
     

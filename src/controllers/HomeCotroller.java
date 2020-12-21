@@ -13,14 +13,10 @@ import services.MysqlConnection;
 public class HomeCotroller {
     private JLabel tongNhanKhauLb;
     private JLabel tongHoKhauLb;
-    private JLabel nhanKhauTamTruLb;
-    private JLabel nhanKhauTamVangLb;
 
-    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb) {
+    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau) {
         this.tongNhanKhauLb = tongNhanKhauLb;
-        this.tongHoKhauLb = tongHoKhau;
-        this.nhanKhauTamTruLb = nhanKhauTamTruLb;
-        this.nhanKhauTamVangLb = nhanKhauTamVangLb;
+        this.tongHoKhauLb = tongHoKhau;    
     }
     
     public void setData() {
@@ -39,22 +35,6 @@ public class HomeCotroller {
             rs = preparedStatement.executeQuery();
             while (rs.next()){
                 this.tongHoKhauLb.setText(String.valueOf(rs.getInt("tong")));
-            }
-            preparedStatement.close();
-            
-            query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < NOW()";
-            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()){
-                this.nhanKhauTamTruLb.setText(String.valueOf(rs.getInt("tong")));
-            }
-            preparedStatement.close();
-            
-            query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < NOW()";
-            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()){
-                this.nhanKhauTamVangLb.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
             
@@ -78,22 +58,4 @@ public class HomeCotroller {
     public void setTongHoKhau(JLabel tongHoKhauLb) {
         this.tongHoKhauLb = tongHoKhauLb;
     }
-
-    public JLabel getNhanKhauTamTruLb() {
-        return nhanKhauTamTruLb;
-    }
-
-    public void setNhanKhauTamTruLb(JLabel nhanKhauTamTruLb) {
-        this.nhanKhauTamTruLb = nhanKhauTamTruLb;
-    }
-
-    public JLabel getNhanKhauTamVangLb() {
-        return nhanKhauTamVangLb;
-    }
-
-    public void setNhanKhauTamVangLb(JLabel nhanKhauTamVangLb) {
-        this.nhanKhauTamVangLb = nhanKhauTamVangLb;
-    }
-    
-    
 }

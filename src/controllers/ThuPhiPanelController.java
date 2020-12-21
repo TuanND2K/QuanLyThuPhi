@@ -1,3 +1,4 @@
+  
 package controllers;
 
 
@@ -15,10 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import models.KhoanDongGopModel;
 import models.KhoanPhiBatBuocModel;
 import services.ThuPhiService;
 import views.infoViews.InfoJframe;
@@ -34,6 +32,7 @@ public class ThuPhiPanelController {
     private ClassTableModel tableModelKhoanPhi = null;
     private final String[] COLUMNS = {"Mã phí", "Tên phí", "Mức phí/người(nghìn đồng)", "Ngày bắt dầu", "Ngày kết thúc"};
     private JFrame parentJFrame;
+    private KhoanPhiBatBuocModel selectedKhoanPhi;
 
     public ThuPhiPanelController(JPanel tableJpn) {
         this.jpnView = tableJpn;
@@ -47,7 +46,7 @@ public class ThuPhiPanelController {
         this.listThuPhiBean.forEach(thuPhi -> {
             listItem.add(thuPhi.getKhoanPhiModel());
         });
-        //if(listItem.isEmpty()) System.out.println("rong");
+        
         DefaultTableModel model = tableModelKhoanPhi.setTableKhoanPhi(listItem, COLUMNS);
         JTable table = new JTable(model) {
             @Override
@@ -57,8 +56,7 @@ public class ThuPhiPanelController {
             
         };
         
-        // thiet ke bang
-        
+        // thiet ke bang        
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table.getTableHeader().setPreferredSize(new Dimension(100, 50));
         table.setRowHeight(50);
@@ -68,6 +66,26 @@ public class ThuPhiPanelController {
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                    
+                    List<KhoanPhiBatBuocModel> listKhoanPhi = new ArrayList<>();
+                    listThuPhiBean.forEach(thuPhi -> {
+                        listKhoanPhi.add(thuPhi.getKhoanPhiModel());
+                    });
+                    if (e.getClickCount() == 1) {
+                        selectedKhoanPhi = listKhoanPhi.get(table.getSelectedRow());
+                    } else if (e.getClickCount() > 1) {
+                        ThuPhiBean info = listThuPhiBean.get(table.getSelectedRow());
+                        InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
+                        infoJframe.setLocationRelativeTo(null);
+                        infoJframe.setVisible(true);
+                    }                    
+            }
+            
+        });        
         
         //
         JScrollPane scroll = new JScrollPane();
@@ -89,4 +107,7 @@ public class ThuPhiPanelController {
         setDataTable();
     }
     
+    public KhoanPhiBatBuocModel getSelectedKhoanPhi() {
+        return selectedKhoanPhi;
+    }
 }

@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/QuanLyThuPhi/src/Bean/DanhMucBean.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/controllers/DongGopController/CapNhatDongGopController.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/Bean/DongGopBean.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/views/infoViews/InfoJframe.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/views/MainFrame.java</file>
             <file>file:/D:/QuanLyThuPhi/src/controllers/DongGopPanelController.java</file>
             <file>file:/D:/QuanLyThuPhi/src/views/DongGopManagerFrame/CapNhatDongGopFrame.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/views/DongGopManagePanel.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/utility/ClassTableModel.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/views/HomePagePanel.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/Bean/ThuPhiBean.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/models/DongGopModel.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/controllers/ThongKePanelController.java</file>
         </group>
     </open-files>
 </project-private>
