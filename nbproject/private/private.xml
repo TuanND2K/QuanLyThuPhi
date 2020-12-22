@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/QuanLyThuPhi/src/views/DongGopManagerFrame/ThemDotDongGopFrame.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/controllers/DongGopController/CapNhatDongGopController.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/views/DongGopManagerFrame/SuaDongGopFrame.java</file>
             <file>file:/D:/QuanLyThuPhi/src/services/DongGopService.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/Bean/ThongKeHoKhauBean.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/controllers/DongGopPanelController.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/views/DongGopManagerFrame/CapNhatDongGopFrame.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/views/ThuPhiManagerFrame/CapNhatThuPhiFrame.java</file>
-            <file>file:/D:/QuanLyThuPhi/src/Bean/ThuPhiBean.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/views/ThuPhiManagerFrame/SuaThongTinThuPhiFrame.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/controllers/ThuPhiController/SuaKhoanPhiController.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/controllers/ThuPhiPanelController.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/controllers/DongGopController/SuaDongGopController.java</file>
+            <file>file:/D:/QuanLyThuPhi/src/views/ThuPhiManagerPanel.java</file>
             <file>file:/D:/QuanLyThuPhi/src/views/DongGopManagePanel.java</file>
             <file>file:/D:/QuanLyThuPhi/src/services/ThuPhiService.java</file>
         </group>
