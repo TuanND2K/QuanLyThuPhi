@@ -8,10 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-/**
- *
- * @author Hai
- */
 public class LoginUI extends javax.swing.JFrame {
     
     private LoginController cont = new  LoginController();

@@ -7,11 +7,6 @@ import views.DongGopManagerFrame.CapNhatDongGopFrame;
 import views.DongGopManagerFrame.SuaDongGopFrame;
 import views.DongGopManagerFrame.ThemDotDongGopFrame;
 
-
-/**
- *
- * @author Hai
- */
 public class DongGopManagePanel extends javax.swing.JPanel {
 
     /**

@@ -5,7 +5,6 @@
  */
 package views.DongGopManagerFrame;
 
-import controllers.DongGopController.SuaDongGopController;
 import controllers.DongGopPanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,7 +22,7 @@ public class SuaDongGopFrame extends javax.swing.JFrame {
     private DongGopPanelController parentController;
     private JFrame parentFrame;
     private DongGopService dongGopService;
-    private SuaDongGopController controller;
+
 
     /**
      * Creates new form CapNhatDongGop
@@ -36,7 +35,6 @@ public class SuaDongGopFrame extends javax.swing.JFrame {
         this.parentFrame = parentFrame;
         this.parentFrame.setEnabled(false);
         thongTinHienTaiTxb.setText(parentController.getSelectedKhoanDongGop().getTenPhi());
-        controller = new SuaDongGopController();
         dongGopService = new DongGopService();
 
         setTitle("Sửa thông tin đóng góp");

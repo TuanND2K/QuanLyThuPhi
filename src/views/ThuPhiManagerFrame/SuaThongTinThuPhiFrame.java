@@ -5,7 +5,6 @@
  */
 package views.ThuPhiManagerFrame;
 
-import controllers.ThuPhiController.SuaKhoanPhiController;
 import controllers.ThuPhiPanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -22,7 +21,6 @@ public class SuaThongTinThuPhiFrame extends javax.swing.JFrame {
     private ThuPhiPanelController parentController;
     private JFrame parentFrame;
     private ThuPhiService thuPhiService;
-    private SuaKhoanPhiController controller;
 
     /**
      * Creates new form CapNhatDongGop
@@ -33,7 +31,6 @@ public class SuaThongTinThuPhiFrame extends javax.swing.JFrame {
         this.parentFrame = parentFrame;
         this.parentFrame.setEnabled(false);
         thongTinTxb.setText(parentController.getSelectedKhoanPhi().getTenPhi());
-        controller = new SuaKhoanPhiController();
         thuPhiService = new ThuPhiService();
 
         setTitle("Sửa thông tin đóng góp");
