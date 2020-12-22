@@ -114,5 +114,20 @@ public class ThuPhiService {
         }
         return true;
     }
-
+    
+    public boolean suaKhoanPhi(KhoanPhiBatBuocModel khoanPhi) {
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            PreparedStatement query = conn.prepareStatement("update khoan_phi_bat_buoc"
+                    + " set tenPhi = ? where maPhi = ?");
+            query.setString(1, khoanPhi.getTenPhi());
+            query.setString(2, khoanPhi.getMaPhi());
+            
+            query.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

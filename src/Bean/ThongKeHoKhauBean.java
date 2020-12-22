@@ -118,7 +118,7 @@ public class ThongKeHoKhauBean {
                     + "<td>" + listKhoanDongGopModel.get(i).getMaPhi() + "</td>"
                     + "<td>" + listKhoanDongGopModel.get(i).getTenPhi() + "</td>"
                     + "<td>" + listKhoanDaDongGop.get(i).getNgayNop() + "</td>"
-                    + "<td>" + listKhoanDaDongGop.get(i).getSoTien() + " nghìn đồng</td>"
+                    + "<td>" + listKhoanDaDongGop.get(i).getSoTien() + ".000 đ</td>"
                     + "</tr>";
         }
         res += "</table></div></html>";

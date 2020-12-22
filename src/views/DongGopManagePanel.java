@@ -4,6 +4,7 @@ import controllers.DongGopPanelController;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import views.DongGopManagerFrame.CapNhatDongGopFrame;
+import views.DongGopManagerFrame.SuaDongGopFrame;
 import views.DongGopManagerFrame.ThemDotDongGopFrame;
 
 
@@ -40,6 +41,7 @@ public class DongGopManagePanel extends javax.swing.JPanel {
         tablePanel = new javax.swing.JPanel();
         addNewBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        changeInforBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -55,7 +57,7 @@ public class DongGopManagePanel extends javax.swing.JPanel {
         tablePanel.setLayout(tablePanelLayout);
         tablePanelLayout.setHorizontalGroup(
             tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 479, Short.MAX_VALUE)
         );
         tablePanelLayout.setVerticalGroup(
             tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,6 +77,14 @@ public class DongGopManagePanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Quản lý đóng góp");
 
+        changeInforBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        changeInforBtn.setText("Sửa thông tin");
+        changeInforBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeInforBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,8 +95,9 @@ public class DongGopManagePanel extends javax.swing.JPanel {
                         .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addNewBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addComponent(addNewBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(changeInforBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -103,7 +114,9 @@ public class DongGopManagePanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addNewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(changeInforBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,9 +141,21 @@ public class DongGopManagePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void changeInforBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeInforBtnActionPerformed
+        if (controller.getSelectedKhoanDongGop() == null) {
+            JOptionPane.showMessageDialog(null, "Chưa chọn khoản đóng góp!");
+        } else {
+            SuaDongGopFrame suaDongGopFrame = new SuaDongGopFrame(controller, parentJFrame);
+            suaDongGopFrame.setLocationRelativeTo(null);
+            suaDongGopFrame.setResizable(false);
+            suaDongGopFrame.setVisible(true);
+        }
+    }//GEN-LAST:event_changeInforBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNewBtn;
+    private javax.swing.JButton changeInforBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel tablePanel;
     private javax.swing.JButton updateBtn;

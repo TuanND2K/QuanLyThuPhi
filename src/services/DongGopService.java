@@ -140,5 +140,21 @@ public class DongGopService {
         }
         return true;
     }
+    
+    public boolean suaDongGop(KhoanDongGopModel khoanDongGop) {
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            PreparedStatement query = conn.prepareStatement("update khoan_dong_gop"
+                    + " set tenPhi = ? where maPhi = ?");
+            query.setString(1, khoanDongGop.getTenPhi());
+            query.setString(2, khoanDongGop.getMaPhi());
+            
+            query.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
 }
