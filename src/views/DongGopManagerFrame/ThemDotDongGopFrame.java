@@ -8,6 +8,7 @@ package views.DongGopManagerFrame;
 import controllers.DongGopController.ThemDotDongGopController;
 import Bean.DongGopBean;
 import controllers.*;
+import java.awt.HeadlessException;
 import java.awt.event.*;
 import java.util.Date;
 import javax.swing.*;
@@ -269,7 +270,7 @@ public class ThemDotDongGopFrame extends javax.swing.JFrame {
                     close();
                     parentController.refreshData();
                 }
-            } catch (Exception e) {
+            } catch (HeadlessException e) {
                 System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
             }

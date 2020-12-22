@@ -5,7 +5,6 @@
  */
 package views.DongGopManagerFrame;
 
-import controllers.DongGopController.CapNhatDongGopController;
 import controllers.DongGopController.SuaDongGopController;
 import controllers.DongGopPanelController;
 import java.awt.event.WindowAdapter;
@@ -14,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import models.KhoanDongGopModel;
 import services.DongGopService;
-import views.DongGopManagePanel;
 
 /**
  *
@@ -29,6 +27,8 @@ public class SuaDongGopFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CapNhatDongGop
+     * @param parentController
+     * @param parentFrame
      */
     public SuaDongGopFrame(DongGopPanelController parentController, JFrame parentFrame) {
         initComponents();

@@ -10,16 +10,11 @@ import controllers.ThuPhiController.CapNhatThuPhiController;
 import controllers.ThuPhiPanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import models.KhoanDongGopModel;
 import models.KhoanPhiBatBuocModel;
 import models.ThuPhiModel;
-import services.MysqlConnection;
 import services.ThuPhiService;
 
 /**

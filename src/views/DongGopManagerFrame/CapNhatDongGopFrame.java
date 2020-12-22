@@ -5,14 +5,12 @@
  */
 package views.DongGopManagerFrame;
 
-import Bean.DongGopBean;
 import controllers.DongGopController.CapNhatDongGopController;
-import controllers.DongGopController.ThemDotDongGopController;
 import controllers.DongGopPanelController;
 import controllers.LoginController;
+import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +27,8 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CapNhatDongGop
+     * @param parentController
+     * @param parentFrame
      */
     public CapNhatDongGopFrame(DongGopPanelController parentController, JFrame parentFrame) {
         initComponents();
@@ -253,7 +253,7 @@ public class CapNhatDongGopFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, message, "Warning", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException e) {
             String message = "Số tiền không thể chứa các ký tự";
             JOptionPane.showMessageDialog(rootPane, message, "Warning", JOptionPane.WARNING_MESSAGE);
             return false;

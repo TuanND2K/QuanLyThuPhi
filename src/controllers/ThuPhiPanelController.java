@@ -3,19 +3,11 @@ package controllers;
 
 
 import Bean.ThuPhiBean;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.EventObject;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import java.util.*;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import models.KhoanPhiBatBuocModel;
 import services.ThuPhiService;

@@ -5,10 +5,12 @@
  */
 package controllers.DongGopController;
 
+import services.DongGopService;
+
 /**
  *
  * @author TuanNguyen
  */
 public class SuaDongGopController {
-    
+    private DongGopService dongGopService = new DongGopService();
 }

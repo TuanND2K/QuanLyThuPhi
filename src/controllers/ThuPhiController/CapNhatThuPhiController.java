@@ -84,7 +84,7 @@ public class CapNhatThuPhiController {
 //              JOptionPane.showConfirmDialog(null, table.getSelectedRow());
                 selectedHoKhauModel = listItem.get(table.getSelectedRow());
                 soTienNop.setText("Số tiền nộp: " 
-                        + parentController.getSelectedKhoanPhi().getMucPhi() * selectedHoKhauModel.getSoLuongThanhVien() + " nghìn đồng");
+                        + parentController.getSelectedKhoanPhi().getMucPhi() * selectedHoKhauModel.getSoLuongThanhVien() + ".000 đ");
             }
             
         });

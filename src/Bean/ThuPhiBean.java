@@ -9,7 +9,7 @@ import models.HoKhauModel;
 import models.KhoanPhiBatBuocModel;
 import models.ThuPhiModel;
 import services.HoKhauService;
-import services.ThuPhiService;
+
 
 public class ThuPhiBean {
 
@@ -61,6 +61,12 @@ public class ThuPhiBean {
         }
         return sum;
     }
+
+    /**
+     *
+     * @return hien thi thong tin bang html
+     */
+    @Override
     public String toString() {
         
         String res = "<html> <style>p {padding: 5px; margin-left: 20px} table, th, td {border: 1px solid black; border-collapse: collapse;} table {width: 500px}</style> <div>"
@@ -69,7 +75,7 @@ public class ThuPhiBean {
                     + "<p>Tên khoản phí: <b>" + khoanPhiModel.getTenPhi() + "</p>"
                     + "<p>Ngày bắt đầu: <b>" + khoanPhiModel.getNgayBatDau() + "</p>"
                     + "<p>Ngày kết thúc: <b>" + khoanPhiModel.getNgayKetThuc() + "</p>"
-                    + "<p>Tổng số tiền đã thu được: <b>" + getTongThuPhi() + " nghìn đồng</p>"
+                    + "<p>Tổng số tiền đã thu được: <b>" + getTongThuPhi() + ".000 đ</p>"
                     + "<h4>Danh sách hộ nộp phí: " + listHoKhau.size() + " hộ đã nộp<table>"
                     + "<tr>"
                     + "<th>ID hộ</th>"
@@ -88,7 +94,7 @@ public class ThuPhiBean {
                     + "<td>" + listHoKhau.get(i).getMaHoKhau() + "</td>"
                     + "<td>" + listHoKhau.get(i).getIdChuHo() + "</td>"
                     + "<td>" + listHoKhau.get(i).getTenChuHo() + "</td>" 
-                    + "<td>" + soThanhVien + " x " + mucPhi + " = " + soThanhVien*mucPhi+ "</td>"
+                    + "<td>" + soThanhVien*mucPhi+ ".000 đ</td>"
                     + "<td>" + listThuPhi.get(i).getNgayNop() + "</td>"
                     + "</tr>";
         }
@@ -112,7 +118,7 @@ public class ThuPhiBean {
                     + "<td>" + hoChuaNop.getMaHoKhau() + "</td>"
                     + "<td>" + hoChuaNop.getIdChuHo() + "</td>"
                     + "<td>" + hoChuaNop.getTenChuHo() + "</td>" 
-                    + "<td>" + soThanhVien + " x " + mucPhi + " = " + soThanhVien*mucPhi+ "</td>"
+                    + "<td>" + soThanhVien + " x " + mucPhi + ".000 đ = " + soThanhVien*mucPhi+ ".000 đ</td>"
                     + "</tr>";             
         }
         res += "</table></div></html>";

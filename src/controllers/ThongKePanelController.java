@@ -2,28 +2,15 @@ package controllers;
 
 
 import Bean.ThongKeHoKhauBean;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
-import javax.swing.ButtonGroup;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import models.HoKhauModel;
-import models.NhanKhauModel;
 import services.HoKhauService;
-import services.StringService;
 import utility.ClassTableModel;
 import views.infoViews.InfoJframe;
 

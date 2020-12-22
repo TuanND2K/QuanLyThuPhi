@@ -7,8 +7,8 @@ package views.ThuPhiManagerFrame;
 
 import Bean.ThuPhiBean;
 import controllers.*;
-import controllers.DongGopController.ThemDotDongGopController;
 import controllers.ThuPhiController.ThemKhoanPhiController;
+import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
@@ -270,7 +270,7 @@ public class ThemKhoanPhiFrame extends javax.swing.JFrame {
                     close();
                     parentController.refreshData();
                 }
-            } catch (Exception e) {
+            } catch (HeadlessException e) {
                 System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -298,7 +298,7 @@ public class ThemKhoanPhiFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Số tiền phải lớn hơn 0", "Warning", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(rootPane, "Mức phí không thể chứa các ký tự", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }

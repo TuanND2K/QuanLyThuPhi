@@ -12,15 +12,11 @@ import views.ThuPhiManagerFrame.CapNhatThuPhiFrame;
 import views.ThuPhiManagerFrame.SuaThongTinThuPhiFrame;
 import views.ThuPhiManagerFrame.ThemKhoanPhiFrame;
 
-/**
- *
- * @author Ai làm thì diền tên vào
- */
 public class ThuPhiManagerPanel extends javax.swing.JPanel {
-    
+
     private JFrame parentFrame;
     private ThuPhiPanelController controller;
-   
+
     public ThuPhiManagerPanel(JFrame parentFrame) {
         this.parentFrame = parentFrame;
         initComponents();
@@ -133,7 +129,7 @@ public class ThuPhiManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (controller.getSelectedKhoanPhi()== null) {
+        if (controller.getSelectedKhoanPhi() == null) {
             JOptionPane.showMessageDialog(null, "Chưa chọn khoản phí!");
         } else {
             SuaThongTinThuPhiFrame suaKhoanPhi = new SuaThongTinThuPhiFrame(controller, parentFrame);
@@ -142,8 +138,8 @@ public class ThuPhiManagerPanel extends javax.swing.JPanel {
             suaKhoanPhi.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

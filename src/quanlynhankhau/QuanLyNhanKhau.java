@@ -2,9 +2,8 @@ package quanlynhankhau;
 
 import java.util.Calendar;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import views.LoginUI;
-import views.MainFrame;
-
 /**
  *
  * @author Hai
@@ -16,7 +15,7 @@ public class QuanLyNhanKhau {
     public static void main(String[] args){
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
         }
 //        MainFrame mainFrame = new MainFrame();
 //        mainFrame.setLocationRelativeTo(null);

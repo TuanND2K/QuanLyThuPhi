@@ -36,7 +36,7 @@ public class ThuPhiService {
             query.setInt(5, khoanPhiModel.getMucPhi());
 
             query.executeUpdate();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return true;
@@ -80,12 +80,12 @@ public class ThuPhiService {
                         thuPhi.setNgayNop(rs1.getDate("ngayNop"));
                         listThuPhi.add(thuPhi);
                     }
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -105,10 +105,7 @@ public class ThuPhiService {
         } catch (SQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Hộ đã đóng tiền trước đó", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        } catch (SQLException ex) {
-            Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
@@ -124,7 +121,7 @@ public class ThuPhiService {
             query.setString(2, khoanPhi.getMaPhi());
             
             query.executeUpdate();
-        } catch(Exception e) {
+        } catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return false;
         }

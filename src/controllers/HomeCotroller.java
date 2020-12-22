@@ -3,6 +3,7 @@ package controllers;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JLabel;
 import services.MysqlConnection;
 
@@ -39,7 +40,7 @@ public class HomeCotroller {
             preparedStatement.close();
             
             connection.close();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
         }
     }
 

@@ -55,6 +55,11 @@ public class DongGopBean {
             return sum;
         }
 	
+    /**
+     *
+     * hien thi thong tin bang html 
+     */
+    @Override
 	public String toString() {
             String res = "<html> <style>p {padding: 5px; margin-left: 20px} table, th, td {border: 1px solid black; border-collapse: collapse;} table {width: 500px}</style> <div>"
                         + "<h3>Thông tin cơ bản"
@@ -62,7 +67,7 @@ public class DongGopBean {
                         + "<p>Tên khoản đóng góp: <b>" + khoanDongGopModel.getTenPhi() + "</p>"
                         + "<p>Ngày bắt đầu: <b>" + khoanDongGopModel.getNgayBatDau() + "</p>"
                         + "<p>Ngày kết thúc: <b>" + khoanDongGopModel.getNgayKetThuc() + "</p>"
-                        + "<p>Tổng số tiền đã thu được: <b>" + getTongDongGop() + " nghìn đồng</p>"
+                        + "<p>Tổng số tiền đã thu được: <b>" + getTongDongGop() + ".000 đ</p>"
                         + "<h4>Danh sách hộ đóng góp: " + listHoKhau.size() + " hộ đã đóng góp<table>"
                         + "<tr>"
                         + "<th>ID hộ</th>"
@@ -78,7 +83,7 @@ public class DongGopBean {
                         + "<td>" + listHoKhau.get(i).getMaHoKhau() + "</td>"
                         +"<td>" + listHoKhau.get(i).getIdChuHo() + "</td>"
                         + "<td>" + listHoKhau.get(i).getTenChuHo() + "</td>" 
-                        + "<td>" + listDongGop.get(i).getSoTien() + "</td>"
+                        + "<td>" + listDongGop.get(i).getSoTien() + ".000 đ</td>"
                         + "<td>" + listDongGop.get(i).getNgayNop()+ "</td>"
                         + "</tr>";
             }

@@ -35,9 +35,7 @@ public class DongGopService {
             Date ketThuc = new Date(khoanDongGop.getNgayKetThuc().getTime());
             insertKhoanDongGop.setDate(4, ketThuc);
             insertKhoanDongGop.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DongGopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
@@ -81,12 +79,11 @@ public class DongGopService {
                         dongGop.setNgayNop(rs1.getDate("ngayNop"));
                         listDongGop.add(dongGop);
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (SQLException e) {
                 }
 
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -150,7 +147,7 @@ public class DongGopService {
             query.setString(2, khoanDongGop.getMaPhi());
             
             query.executeUpdate();
-        } catch(Exception e) {
+        } catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return false;
         }
